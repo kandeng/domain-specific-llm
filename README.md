@@ -43,5 +43,5 @@ Volume 2. Multimodality
 Volume 3. Case studies
 
   Chapter 1. CRM
-  Chapter 2. Combat command system for game
+  Chapter 2. Command-and-control system for game
 ~~~
