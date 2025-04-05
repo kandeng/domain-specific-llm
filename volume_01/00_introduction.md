@@ -1,4 +1,4 @@
-# Introduction
+# 0. Introduction
 
 With the progress of AI large model towards Artificial General Intelligence (AGI), 
 there are more and more research and pracitise on Artificial Domain Intelligence (ADI), aka domain specific LLM, and domain knowledge injection for LLM. 
