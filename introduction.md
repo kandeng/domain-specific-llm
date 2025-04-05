@@ -1,7 +1,10 @@
 # Introduction
 
-According to ["Injecting Domain-Specific Knowledge into Large Language Models: A Comprehensive Survey"](https://arxiv.org/abs/2502.10708), 
-so far there are 4 paradigms for the domain specific LLMs, illustrated as the following diagram. 
+With the progress of AI large model towards Artificial General Intelligence (AGI), 
+there are more and more research and pracitise on Artificial Domain Intelligence (ADI), aka domain specific LLM, and domain knowledge injection for LLM. 
+
+["Injecting Domain-Specific Knowledge into Large Language Models: A Comprehensive Survey"](https://arxiv.org/abs/2502.10708), 
+summarizes the implementations of domain specific LLM into 4 paradigms, illustrated as the following diagram. 
 
 ![4 paradigms for the domain specific LLMs](https://github.com/kandeng/domain-specific-llm/blob/main/assets/domain_specific_llm_4_paradigms.png)
 
@@ -13,7 +16,7 @@ The boundaries of the 4 paradigms are not fixed. In practise, it is more likely 
 2. For static domain knowledge, Supervised Fine Tuning (SFT) with [Low Rank Adaptation (LoRA)](https://arxiv.org/abs/2106.09685) is very popular,
    to improve the quality of the answer, and to reduce the response time.
 
-3. To reduce the computational cost of SFT, in addition to LoRA, many other techniques are also used, including
+3. To reduce the computational cost of SFT, many techniques are used in addition to LoRA, including
    
    * modular adapter, e.g. [llama adapter](https://arxiv.org/abs/2303.16199),
      
