@@ -6,7 +6,7 @@ there are more and more research and pracitise on Artificial Domain Intelligence
 ["Injecting Domain-Specific Knowledge into Large Language Models: A Comprehensive Survey"](https://arxiv.org/abs/2502.10708), 
 summarizes the implementations of domain specific LLM into 4 paradigms, illustrated as the following diagram. 
 
-![4 paradigms for the domain specific LLMs](https://github.com/kandeng/domain-specific-llm/blob/main/assets/domain_specific_llm_4_paradigms.png)
+![4 paradigms for the domain specific LLMs](./assets/domain_specific_llm_4_paradigms.png)
 
 The boundaries of the 4 paradigms are not fixed. In practise, it is more likely to integrate multiple techniques, rather than use only one single technique. 
 
