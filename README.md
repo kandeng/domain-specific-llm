@@ -1,61 +1,62 @@
-# domain-specific-llm
+# Artificial Domain Intelligence (ADI)
 
-A notebook for industry domain specific large AI model research and development,
+A notebook of the research and development of Artificial Domain Intelligence (ADI), aka industry domain specific LLM,
 including tutorials, paper readings, hand-on practise, case studies. 
 
+&nbsp;
 ## 1. Contents 
 
 **Volume 1. Domain specific LLM**
 
-  0. [Introduction]()
+  0. [Introduction](./volume_01/00_introduction.md)
 
-  **Chapter 1. Pretraining**
+  &nbsp;&nbsp; **Chapter 1. Pretraining**
   
-  1.1 Transformer 
+  &nbsp;&nbsp; 1.1 Transformer 
 
-  **Chapter 2. SFT**
+  &nbsp;&nbsp; **Chapter 2. SFT**
   
-  2.1 Flash attention
+  &nbsp;&nbsp; 2.1 Flash attention
     
-  2.2 Low Rank Adaptation
+  &nbsp;&nbsp; 2.2 Low Rank Adaptation
     
-  2.3 Mixture of Experts
+  &nbsp;&nbsp; 2.3 Mixture of Experts
 
-  **Chapter 3. RL for reasoning**
+  &nbsp;&nbsp; **Chapter 3. RL for reasoning**
   
-  3.1 PPO review
+  &nbsp;&nbsp; 3.1 PPO review
   
-  3.2 DPO review
+  &nbsp;&nbsp; 3.2 DPO review
   
-  3.3 Monto Carlo Tree Search (MCTS)
+  &nbsp;&nbsp; 3.3 Monto Carlo Tree Search (MCTS)
   
-  3.4 ORM vs PRM
+  &nbsp;&nbsp; 3.4 ORM vs PRM
   
-  3.5 GRPO
+  &nbsp;&nbsp; 3.5 GRPO
 
-  **Chapter 4. Training Dataset** 
+  &nbsp;&nbsp; **Chapter 4. Training Dataset** 
     
-  4.1 Data distillation
+  &nbsp;&nbsp; 4.1 Data distillation
   
-  4.2 MCTS for data annotation
+  &nbsp;&nbsp; 4.2 MCTS for data annotation
 
 &nbsp;
 
 **Volume 2. Multimodality**
 
-  Chapter 1. Image generation
+  &nbsp;&nbsp; Chapter 1. Image generation
   
-  Chapter 2. Image recoginition
+  &nbsp;&nbsp; Chapter 2. Image recoginition
   
-  Chapter 3. Multimodal LLM
+  &nbsp;&nbsp; Chapter 3. Multimodal LLM
 
 &nbsp;
 
 **Volume 3. Case studies**
 
-  Chapter 1. CRM
+  &nbsp;&nbsp; Chapter 1. CRM
   
-  Chapter 2. Command-and-control system for game
+  &nbsp;&nbsp; Chapter 2. Command-and-control system for game
 
 
 &nbsp;
