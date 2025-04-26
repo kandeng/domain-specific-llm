@@ -10,11 +10,11 @@ including tutorials, paper readings, hand-on practise, case studies.
 
   0. [Introduction](./volume_01/00_introduction.md)
 
-  &nbsp;&nbsp; **Chapter 1. Pretraining**
+  &nbsp;&nbsp; **Chapter 1. Full Fine Tuning**
   
   &nbsp;&nbsp; 1.1 Transformer 
 
-  &nbsp;&nbsp; **Chapter 2. SFT**
+  &nbsp;&nbsp; **Chapter 2. Supervised Fine Tuning (SFT)**
   
   &nbsp;&nbsp; 2.1 Flash attention
     
