@@ -33,8 +33,7 @@ because it seems that Huggingface accelerate is still in rapid upgrading.
 &nbsp;
 ## 2. SSH HostKeyAlgorithms
 
-We want `172.16.80.33` and `172.16.80.31` to be able to mutually `ssh` to each other, 
-without typing in password. 
+We want `172.16.80.33` and `172.16.80.31` to be able to mutually `ssh` to each other. 
 
 ### 2.1 Problem: The authenticity of host can't be established   
 
@@ -65,32 +64,19 @@ root@172.16.80.31's password: ...
 
 ### 2.3 Verification
 
-The following is the correct result, when we `ssh` from `172.16.80.31` to `172.16.80.33` without password. 
+The following was a succussful example, when we `ssh` from `172.16.80.31` to `172.16.80.33`. Notice that we were asked for the password when logging in. 
 
-You should double check that `172.16.80.33` can `ssh` to `172.16.80.31` without password, too. 
+You should double check that `172.16.80.33` can `ssh` to `172.16.80.31`, too. 
 
 ~~~
-(grpo) root@172.16.80.33:~/kdeng# ssh root@172.16.80.31
+(grpo) root@172.16.80.33:~/kdeng# ssh -p 22 root@172.16.80.31
+root@172.16.80.31's password: ...
+
 Welcome to Ubuntu 22.04.4 LTS (GNU/Linux 6.5.0-18-generic x86_64)
-
- * Documentation:  https://help.ubuntu.com
- * Management:     https://landscape.canonical.com
- * Support:        https://ubuntu.com/pro
-
-扩展安全维护（ESM）Applications 未启用。
-
-124 更新可以立即应用。
-这些更新中有 9 个是标准安全更新。
-要查看这些附加更新，请运行：apt list --upgradable
-
-7 个额外的安全更新可以通过 ESM Apps 来获取安装。
-可通过以下途径了解如何启用 ESM Apps：at https://ubuntu.com/esm
-
-Last login: Mon Apr 28 15:39:37 2025 from 172.16.80.33
+...
 (base) root@yw01:~# exit
 注销
 Connection to 172.16.80.31 closed.
-
 (grpo) root@172.16.80.33:~/kdeng# 
 ~~~
 
@@ -98,4 +84,122 @@ Connection to 172.16.80.31 closed.
 &nbsp;
 ## 3. SSH without password
 
+Not only did we want `172.16.80.33` and `172.16.80.31` to be able to mutually `ssh` to each other, 
+but also wanted them `ssh` to each other without typing in password. 
 
+### 3.1 Problem: ssh needs password
+
+~~~
+(grpo) root@172.16.80.33:~/kdeng# ssh -o PasswordAuthentication=no 172.16.80.31
+root@172.16.80.31: Permission denied (publickey,password).
+~~~
+
+### 3.2 Solution: ssh-copy-id user@host
+
+**Step 1.** Set PasswordAuthentication yes
+
+According to ["Error 'Permission denied (publickey,password)'"](https://superuser.com/questions/912531/error-permission-denied-publickey-password),
+the first step is to set `PasswordAuthentication yes` in file `/etc/ssh/sshd_config` at the destination machine. 
+
+Since we wanted `172.16.80.33` and `172.16.80.31` mutually `ssh` to each other without password, 
+we modified `/etc/ssh/sshd_config` files on both machines. 
+
+**Step 2.** ssh-copy-id from 172.16.80.33 to 172.16.80.31
+
+According to ["ssh-copy-id no identities found error"](https://stackoverflow.com/questions/22530886/ssh-copy-id-no-identities-found-error),
+the simplest way is to,
+
+~~~
+ssh-keygen
+[enter]
+[enter]
+[enter]
+
+cd ~/.ssh
+ssh-copy-id -i id_rsa.pub USERNAME@SERVERTARGET
+~~~
+
+Therefore, on `172.16.80.33`, we did the following,
+
+~~~
+(grpo) root@172.16.80.33:~/kdeng# cd ~/.ssh/
+(grpo) root@172.16.80.33::~/.ssh# pwd
+/root/.ssh
+
+(grpo) root@172.16.80.33::~/.ssh# ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /root/.ssh/id_rsa
+Your public key has been saved in /root/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:BbGviX75OPi01kqy61BHX/T+oSBxPVy3kds9NUKZhvw root@yw-NF5688-M7-A0-R0-00
+The key's randomart image is:
++---[RSA 3072]----+
+|        o.. +.ooo|
+|         o +o*.o=|
+|        o...++o.*|
+|       . +o. E.oo|
+|      . S.o.  ...|
+|     . o o. . ...|
+|    . o.=o   .  .|
+|     o.==o.      |
+|     .===+.      |
++----[SHA256]-----+
+
+(grpo) root@172.16.80.33::~/.ssh# ls
+id_rsa  id_rsa.pub  known_hosts  known_hosts.old
+
+(grpo) root@172.16.80.33::~/.ssh# ssh-copy-id -i id_rsa.pub root@172.16.80.31
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+root@172.16.80.31's password: ...
+
+Number of key(s) added: 1
+Now try logging into the machine, with:   "ssh 'root@172.16.80.31'"
+and check to make sure that only the key(s) you wanted were added.
+
+(grpo) root@172.16.80.33::~/.ssh#
+~~~
+
+**Step 3.** ssh-copy-id from 172.16.80.31 to 172.16.80.33
+
+Similar to the above. 
+
+**Step 4.** Set PasswordAuthentication no
+
+According to ["Error 'Permission denied (publickey,password)'"](https://superuser.com/questions/912531/error-permission-denied-publickey-password),
+the last step is to set `PasswordAuthentication no` in file `/etc/ssh/sshd_config` on both machines. 
+
+
+### 3.3 Verification
+
+The following is a successful example that `172.16.80.33` can successfully 
+`ssh -o PasswordAuthentication=no` to `172.16.80.31`, without password.
+
+Or, even simpler, `172.16.80.33` can successfully 
+`ssh` to `172.16.80.31` without being asked for password.
+
+You should double check that `172.16.80.31` can successfully 
+`ssh` to `172.16.80.33` without password, too. 
+
+~~~
+(grpo) root@172.16.80.33:~/kdeng# ssh -p 22 -o PasswordAuthentication=no root@172.16.80.31
+Welcome to Ubuntu 22.04.4 LTS (GNU/Linux 6.5.0-18-generic x86_64)
+...
+Last login: Mon Apr 28 22:46:26 2025 from 172.16.80.33
+(base) root@yw01:~# exit
+注销
+Connection to 172.16.80.31 closed.
+~~~
+~~~
+(grpo) root@172.16.80.33:~/kdeng# ssh -p 22 root@172.16.80.31
+Welcome to Ubuntu 22.04.4 LTS (GNU/Linux 6.5.0-18-generic x86_64)
+...
+Last login: Mon Apr 28 22:46:26 2025 from 172.16.80.33
+(base) root@yw01:~# exit
+注销
+Connection to 172.16.80.31 closed.
+~~~
