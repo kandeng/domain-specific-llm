@@ -31,10 +31,43 @@ because it seems that Huggingface accelerate is still in rapid upgrading.
 
 
 &nbsp;
-## 2. SSH with no password
+## 2. SSH HostKeyAlgorithms
 
 We want `172.16.80.33` and `172.16.80.31` to be able to mutually `ssh` to each other, 
 without typing in password. 
+
+### 2.1 Problem: The authenticity of host can't be established   
+
+The first time when we `ssh` from `172.16.80.33` to `172.16.80.31`, we encountered the following error, 
+
+~~~
+(grpo) root@172.16.80.33:~/kdeng# ssh -p 22 root@172.168.80.31
+The authenticity of host '172.16.80.31' can't be established. 
+ED25519 key fingerprint is SHA256:gxYjzI+p8kBNPp5JcaHskQ+DgfUoriKsgJN0XOt5Ikw.
+This key is not known by any other names. 
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+Warning: Permanently added '172.16.80.31' (ED25519) to the list of known hosts. 
+~~~
+
+### 2.2 Solution: HostKeyAlgorithms=+ssh-rsa
+
+The solution is to add `-o HostKeyAlgorithms=+ssh-rsa` to the command. 
+This should be done only once, 
+after then, we can `ssh` successfully. 
+
+~~~
+(grpo) root@172.16.80.33:~/kdeng# ssh -p 22 root@172.16.80.31 -o HostKeyAlgorithms=+ssh-rsa
+root@172.16.80.31's password: ...
+(base) root@172.16.80.31# exit
+
+(grpo) root@172.16.80.33:~/kdeng#
+~~~
+
+### 2.3 Verification
+
+The following is the correct result, when we `ssh` from `172.16.80.31` to `172.16.80.33` without password. 
+
+You should double check that `172.16.80.33` can `ssh` to `172.16.80.31` without password, too. 
 
 ~~~
 (grpo) root@172.16.80.33:~/kdeng# ssh root@172.16.80.31
@@ -61,10 +94,8 @@ Connection to 172.16.80.31 closed.
 (grpo) root@172.16.80.33:~/kdeng# 
 ~~~
 
-The above is the correct result, when `172.16.80.31` successfully `ssh` to `172.16.80.33` without password. 
 
-You should also double check that `172.16.80.33` can `ssh` to `172.16.80.31` without password, too. 
-
-
+&nbsp;
+## 3. SSH without password
 
 
