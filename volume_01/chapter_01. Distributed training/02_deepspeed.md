@@ -205,7 +205,11 @@ Connection to 172.16.80.31 closed.
 ~~~
 
 &nbsp;
-## 4. pdsh: Parallel Distributed remote SHells
+## 4. pdsh: remote SHells
+
+`pdsh` stands for Parallel Distributed SHells. 
+The `pdsh` tool is arguably one of the most popular parallel remote shells. 
+It allows you to run commands on multiple nodes using `SSH`. 
 
 Installation,
 
