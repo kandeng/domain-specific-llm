@@ -203,3 +203,26 @@ Last login: Mon Apr 28 22:46:26 2025 from 172.16.80.33
 注销
 Connection to 172.16.80.31 closed.
 ~~~
+
+&nbsp;
+## 4. pdsh: Parallel Distributed remote SHells
+
+Installation,
+
+~~~
+(grpo) root@172.16.80.33:~/kdeng# sudo apt-get -y install pdsh
+正在读取软件包列表... 完成
+正在分析软件包的依赖关系树... 完成
+正在读取状态信息... 完成                 
+pdsh 已经是最新版 (2.31-3build2)。
+升级了 0 个软件包，新安装了 0 个软件包，要卸载 0 个软件包，有 140 个软件包未被升级。
+(grpo) root@172.16.80.33:~/kdeng# 
+~~~
+
+Verification, 
+
+~~~
+(grpo) root@172.16.80.33:~/kdeng# pdsh -w ssh:172.16.80.33,ssh:172.16.80.31 date
+172.16.80.33: 2025年 04月 28日 星期一 23:37:02 CST
+172.16.80.31: 2025年 04月 28日 星期一 23:37:56 CST
+~~~
