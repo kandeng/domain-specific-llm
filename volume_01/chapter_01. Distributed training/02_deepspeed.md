@@ -230,3 +230,107 @@ Verification,
 172.16.80.33: 2025年 04月 28日 星期一 23:37:02 CST
 172.16.80.31: 2025年 04月 28日 星期一 23:37:56 CST
 ~~~
+
+
+&nbsp;
+## 5. Multi-node communication 
+
+It is helpful to run multi-node communication testing tool, 
+to double check the progress of deepspeed setting up across multiple GPU servers. 
+
+### 5.1 Hostfile
+
+Referring to [Training On Multiple Nodes With DeepSpeed](https://nlp.stanford.edu/mistral/tutorials/deepspeed.html)
+and [its github repo](https://github.com/stanford-crfm/mistral/blob/main/conf/deepspeed/hostfile),
+we need to create a `/job/hostfile` file for multi-node deepspeed communication. 
+
+In our scenario, we have two GPU servers, and their IP address are `172.16.80.33` and `172.16.80.31`. 
+And we use `172.16.80.33` as the master node. 
+
+In our case, we need to create `/job/hostfile` file on `172.16.80.33` as following,
+
+~~~
+172.16.80.33 slots=8
+172.16.80.31 slots=8
+~~~
+
+### 5.2 Communication test
+
+Referring to [Huggingface: Multi-GPU debugging](https://huggingface.co/docs/transformers/debugging#communication).
+
+> Distributed training involves communication between processes and or nodes
+> and this can be a potential source of errors.
+> 
+> Download the script below to diagnose network issues, and then run it to test GPU communication.
+> The example command below tests how two GPUs communicate.
+>
+> Adjust the `--nproc_per_node` and `--nnodes` parameters to adapt it to your system.
+
+~~~
+(grpo) root@yw01:~/kdeng/deepspeed# pwd
+/root/kdeng/deepspeed
+
+(grpo) root@yw01:~/kdeng/deepspeed# wget https://raw.githubusercontent.com/huggingface/transformers/main/scripts/distributed/torch-distributed-gpu-test.py
+
+(grpo) root@yw01:~/kdeng/deepspeed# NCCL_DEBUG=INFO python -m torch.distributed.run --nproc_per_node 8 --nnodes 1 torch-distributed-gpu-test.py
+~~~
+
+The `torch-distributed-gpu-test.py` will print out a lot of messages. If there is no errors, that means everything works fine. 
+
+However, when setting `--nnodes 1` to 2, it threw many errors. The reason was that NCCL didn't work properly. 
+
+
+### 5.3 Process that occupies a specific port
+
+Sometimes when running `torch-distributed-gpu-test.py`, 
+you may encounter a problem that a specific port, like `29500` was used by a unknown process. 
+
+To `kill -9 PID` this process, you need to find the PID of this process. 
+A useful tool refers to [Finding the PID of the process using a specific port?](https://unix.stackexchange.com/questions/106561/finding-the-pid-of-the-process-using-a-specific-port). 
+
+~~~
+$ sudo ss -lptn 'sport = :80'
+State   Local Address:Port  Peer Address:Port              
+LISTEN  127.0.0.1:80        *:*                users:(("nginx",pid=125004,fd=12))
+LISTEN  ::1:80              :::*               users:(("nginx",pid=125004,fd=11))
+~~~
+
+
+&nbsp;
+## 6. NCCL 
+
+Referring to [NVIDIA Collective Communications Library (NCCL)](https://developer.nvidia.com/nccl), 
+
+> The NVIDIA Collective Communication Library (NCCL) implements multi-GPU and multi-node communication primitives
+> optimized for NVIDIA GPUs and Networking.
+>
+> NCCL provides routines such as all-gather, all-reduce, broadcast, reduce, reduce-scatter as well as point-to-point
+> send and receive that are optimized to achieve high bandwidth and low latency
+> over PCIe and NVLink high-speed interconnects
+> within a node and over NVIDIA Mellanox Network across nodes.
+
+### 6.1 CUDA home
+
+To find the CUDA home directory, do the following. In this case, the CUDA_HOME is `/usr/local/cuda-12.4`.
+
+~~~
+(grpo) root@yw01:~/kdeng/deepspeed# nvcc --version
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2024 NVIDIA Corporation
+Built on Thu_Mar_28_02:18:24_PDT_2024
+Cuda compilation tools, release 12.4, V12.4.131
+Build cuda_12.4.r12.4/compiler.34097967_0
+
+(grpo) root@yw01:~/kdeng/deepspeed# ls /usr/local/cuda*
+/usr/local/cuda:
+...
+
+/usr/local/cuda-12:
+...
+
+/usr/local/cuda-12.4:
+bin                doc   EULA.txt  gds      lib64    nsightee_plugins  nvvm    share  targets  version.json
+compute-sanitizer  DOCS  extras    include  libnvvp  nvml              README  src    tools
+
+(grpo) root@yw01:~# export CUDA_HOME=/usr/local/cuda-12.4
+~~~
