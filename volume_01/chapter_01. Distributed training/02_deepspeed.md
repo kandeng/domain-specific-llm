@@ -374,7 +374,18 @@ we took the following steps to set `NCCL_SOCKET_IFNAME`.
     (grpo) root@yw01:~# export NCCL_SOCKET_IFNAME=ens14f1
     ~~~
 
-### 6.3 Installation of NCCL
+### 6.3 Check the version of NCCL
+
+Referring to stackoverflow's [How to check the version of NCCL](https://stackoverflow.com/questions/66984809/how-to-check-the-version-of-nccl),
+
+~~~
+(grpo) root@yw-NF5688-M7-A0-R0-00:~/kdeng/deepspeed# python -c "import torch;print(torch.cuda.nccl.version())"
+(2, 21, 5)
+~~~
+
+Hence, the version of NCCL on `172.16.80.33` is `2.21.5`. 
+
+### 6.4 Installation of NCCL
 
 There are two ways to install NCCL, 
 one is to follow the guide on [Nvidia's official website](https://developer.nvidia.com/nccl), 
