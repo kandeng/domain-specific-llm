@@ -334,3 +334,48 @@ compute-sanitizer  DOCS  extras    include  libnvvp  nvml              README  s
 
 (grpo) root@yw01:~# export CUDA_HOME=/usr/local/cuda-12.4
 ~~~
+
+### 6.2 NCCL_SOCKET_IFNAME
+
+Referring to [How to set NCCL_SOCKET_IFNAME #286](https://github.com/NVIDIA/nccl/issues/286), 
+we took the following steps to set `NCCL_SOCKET_IFNAME`.
+
+1. Find the socket names of the two GPU servers.
+
+    On `172.16.80.33`, 
+    ~~~
+    (grpo) root@yw-NF5688-M7-A0-R0-00:~# ifconfig
+    ...
+    ens14f0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.16.80.33  netmask 255.255.255.0  broadcast 172.16.80.255
+    ~~~
+
+    On `172.16.80.31`, 
+    ~~~
+    (grpo) root@yw01:~# ifconfig
+    ...
+    ens14f1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.16.80.31  netmask 255.255.255.0  broadcast 172.16.80.255 
+    ~~~
+
+    Hence, `172.16.80.33`'s socket name is `ens14f0`, and `172.16.80.31`'s socket name is `ens14f1`. 
+
+2. export `NCCL_SOCKET_IFNAME`
+
+    We exported `NCCL_SOCKET_IFNAME` on the two GPU servers, one by one. 
+
+    On `172.16.80.33`, 
+    ~~~
+    (grpo) root@yw-NF5688-M7-A0-R0-00:~# export NCCL_SOCKET_IFNAME=ens14f0
+    ~~~
+
+    On `172.16.80.31`, 
+    ~~~
+    (grpo) root@yw01:~# export NCCL_SOCKET_IFNAME=ens14f1
+    ~~~
+
+### 6.3 Installation of NCCL
+
+There are two ways to install NCCL, 
+one is to follow the guide on [Nvidia's official website](https://developer.nvidia.com/nccl), 
+the other is to following the instruction on [Nvidia's github repo](https://github.com/NVIDIA/nccl). 
