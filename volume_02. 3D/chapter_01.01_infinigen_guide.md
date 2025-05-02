@@ -44,8 +44,45 @@ We generated a natural scene in two ways, both were succussful.
 The result consists of many files, including many images. The human readable image is in the `outputs/hello_world/0/frames/Image/camera_0/` directory, 
 
    <p align="center">
-     <img alt="Generated RGP image of infinigen" src="./assets/0101_helloworld_desert.png" width="85%">
+     <img alt="Generated RGP image of infinigen" src="./assets/0101_helloworld_desert_20250502.png" width="85%">
    </p>
 
 Later on we will dive into the source codes of these two scripts, to study the usage of infinigen in depth. 
+
+We also tried a more complex case, 
+
+~~~
+(infinigen) robot@robot-test:~/infinigen$ nohup python -m infinigen.datagen.manage_jobs \
+  --output_folder outputs/my_videos --num_scenes 500 \
+  --pipeline_config slurm monocular_video cuda_terrain opengl_gt \
+  --cleanup big_files \
+  --warmup_sec 60000 \
+  --config trailer_video high_quality_terrain \
+  -p fine_terrain.mesher_backend="OcMesher" \
+  > log_20250502.txt &
+~~~
+
+It took about 30 minutes to finish. And according to the log, 
+the generated content is a blender readable file `scene.blend`. 
+
+~~~
+(infinigen) robot@robot-test:~/infinigen$ tail -n 200 outputs/my_videos/38b0e901/logs/419177_0_log.err
+...
+[00:26:59.615] [logging] [INFO] | [Writing output blendfile]
+[00:26:59.615] [execute_tasks] [INFO] | Writing output blendfile to /home/robot/infinigen/outputs/my_videos/38b0e901/coarse/scene.blend
+[00:26:59.936] [logging] [INFO] | [Writing output blendfile] finished in 0:00:00.321006
+[00:26:59.950] [logging] [INFO] | [MAIN TOTAL] finished in 0:36:49.082323
+~~~
+
+We opened the blender UI by executing the following, 
+
+~~~
+(infinigen) robot@robot-test:~/infinigen$ ./blender/blender
+~~~
+
+And then in the blender UI, we opened the file `scene.blend`, and saw the following 3D scene. 
+
+   <p align="center">
+     <img alt="Generated RGP image of infinigen" src="./assets/0101_blender_scene_20250502.png" width="85%">
+   </p>
 
