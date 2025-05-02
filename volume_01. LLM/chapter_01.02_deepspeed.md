@@ -1,4 +1,4 @@
-# 02. Distributed LLM training with DeepSpeed 
+# Chapter 01 - 02. Distributed LLM training with DeepSpeed 
 
 ## 1. Objectives
 
