@@ -49,7 +49,7 @@ including tutorials, paper readings, hand-on practise, case studies.
      
   &nbsp;&nbsp; **Chapter 1. Anatomy of Infinigen**
 
-  &nbsp;&nbsp; [01. Inifinigen Getting Started](./volume_02.%203D/chapter_01.01_infinigen_guide.md)
+  &nbsp;&nbsp; [01. Infinigen Getting Started](./volume_02.%203D/chapter_01.01_infinigen_guide.md)
 
 &nbsp;
 
