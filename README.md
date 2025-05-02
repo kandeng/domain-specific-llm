@@ -8,7 +8,7 @@ including tutorials, paper readings, hand-on practise, case studies.
 
 **Volume 1. Domain Specific LLM**
 
-  0. [Introduction](./volume_01/00_introduction.md)
+  &nbsp;&nbsp; [0. Introduction](./volume_01/00_introduction.md)
 
   &nbsp;&nbsp; **Chapter 1. Distributed and Parallel Training**
 
@@ -19,8 +19,7 @@ including tutorials, paper readings, hand-on practise, case studies.
   &nbsp;&nbsp; **Chapter 2. Supervised Fine Tuning (SFT)**
   
   &nbsp;&nbsp; 2.1 Flash attention
-    
-  &nbsp;&nbsp; 2.2 Low Rank Adaptation
+     2 Low Rank Adaptation
     
   &nbsp;&nbsp; 2.3 Mixture of Experts
 
@@ -46,7 +45,7 @@ including tutorials, paper readings, hand-on practise, case studies.
 
 **Volume 2. 3D Object and Scene Generation**
 
-  0. [Introduction](./volume_02.%203D/00_introduction.md)
+  &nbsp;&nbsp; [0. Introduction](./volume_02.%203D/00_introduction.md)
      
   &nbsp;&nbsp; **Chapter 1. Anatomy of Infinigen**
 
