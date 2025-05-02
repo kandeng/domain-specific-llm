@@ -41,5 +41,11 @@ We generated a natural scene in two ways, both were succussful.
 2. The second one is [one command execution](https://github.com/princeton-vl/infinigen/blob/main/docs/HelloWorld.md#generate-scenes-in-one-command),
    the purpose is to test run `manage_jobs.py`.
 
+The result consists of many files, including many images. The human readable image is in the `outputs/hello_world/0/frames/Image/camera_0/` directory, 
+
+   <p align="center">
+     <img alt="Generated RGP image of infinigen" src="./assets/0101_helloworld_desert.png" width="85%">
+   </p>
+
 Later on we will dive into the source codes of these two scripts, to study the usage of infinigen in depth. 
 
