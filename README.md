@@ -6,13 +6,15 @@ including tutorials, paper readings, hand-on practise, case studies.
 &nbsp;
 ## 1. Contents 
 
-**Volume 1. Domain specific LLM**
+**Volume 1. Domain Specific LLM**
 
   0. [Introduction](./volume_01/00_introduction.md)
 
-  &nbsp;&nbsp; **Chapter 1. Full Fine Tuning**
+  &nbsp;&nbsp; **Chapter 1. Distributed and Parallel Training**
+
+  &nbsp;&nbsp; [01. Parallel LLM training with Unsloth](./volume_01.%20LLM/chapter_01.01_unsloth.md)
   
-  &nbsp;&nbsp; 1.1 Transformer 
+  &nbsp;&nbsp; [02. Distributed LLM training with DeepSpeed](./volume_01.%20LLM/chapter_01.02_deepspeed.md) 
 
   &nbsp;&nbsp; **Chapter 2. Supervised Fine Tuning (SFT)**
   
@@ -42,24 +44,15 @@ including tutorials, paper readings, hand-on practise, case studies.
 
 &nbsp;
 
-**Volume 2. Multimodality**
+**Volume 2. 3D Object and Scene Generation**
 
-  &nbsp;&nbsp; Chapter 1. Image generation
-  
-  &nbsp;&nbsp; Chapter 2. Image recoginition
-  
-  &nbsp;&nbsp; Chapter 3. Multimodal LLM
+  0. [Introduction](./volume_02.%203D/00_introduction.md)
+     
+  &nbsp;&nbsp; **Chapter 1. Anatomy of Infinigen**
 
-&nbsp;
-
-**Volume 3. Case studies**
-
-  &nbsp;&nbsp; Chapter 1. CRM
-  
-  &nbsp;&nbsp; Chapter 2. Command-and-control system for game
-
+  &nbsp;&nbsp; [01. Inifinigen Getting Started](./volume_02.%203D/chapter_01.01_infinigen_guide.md)
 
 &nbsp;
-## 2. Updates
+
 
 
