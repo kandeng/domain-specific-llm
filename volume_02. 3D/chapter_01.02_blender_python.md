@@ -36,3 +36,49 @@ Some references,
 
    A blogspot contains some Blender script snippets.
 
+
+&nbsp;
+## 2. njanakiev/blender-scripting
+
+### 2.1 fisher_iris_visualization mp4
+
+To obtain practical experience of Blender python scripting quickly, 
+we followed the instruction of [Github: njanakiev/blender-scripting](https://github.com/njanakiev/blender-scripting). 
+
+1. We executed a script `run_script.py`, to generate a series of png images, 
+`scripts/frames/fisher_iris_visualization%04d.png`, 
+
+    ~~~
+    robot@robot-test:~$ conda deactivate
+    (infinigen) robot@robot-test:~$ git clone https://github.com/njanakiev/blender-scripting.git
+
+    (infinigen) robot@robot-test:~$ cd blender-scripting/
+    (infinigen) robot@robot-test:~/blender-scripting$ blender -b -P run_script.py
+    ~~~
+
+    Here is a sample of the series of images,
+
+   <p align="center">
+     <img alt="A sample of fisher_iris image series" src="./assets/0102_fisher_iris_20250503.png" width="85%">
+   </p>
+
+2. We used `ffmpeg` to convert the series of images into a mp4 video clip,
+   [fisher_iris_20250503.mp4](./assets/0102_fisher_iris_20250503.mp4). 
+
+   You need to download the video clip first, after then view it using any video displayer,
+   like [VLC media player](https://www.videolan.org/), or Chrome browser. 
+
+    ~~~
+    (infinigen) robot@robot-test:~/blender-scripting$ ffmpeg -r 15 \
+        -i scripts/frames/fisher_iris_visualization%04d.png \
+        -c:v libx264 -c:a aac -ar 44100 -pix_fmt yuv420p \
+        outputs/fisher_iris_visualization.mp4
+    ...
+    Input #0, image2, from 'scripts/frames/fisher_iris_visualization%04d.png':
+      Duration: 00:00:02.00, start: 0.000000, bitrate: N/A
+      Stream #0:0: Video: png, rgba(pc), 512x512 [SAR 2834:2834 DAR 1:1], 25 fps, 25 tbr, 25 tbn, 25 tbc
+    ...
+    Output #0, mp4, to 'fisher_iris_visualization.mp4':
+    ~~~
+
+### 2.2 
