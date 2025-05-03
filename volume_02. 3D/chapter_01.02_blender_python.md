@@ -9,11 +9,17 @@ to generate synthetic images of nature scene, as well as indoors layouts with fu
 
 This article is an essential developer's guide to write python scripts with Blender Python (BPY). 
 
-Some references, 
+## 2. References
 
 1. [Blender official python api](https://docs.blender.org/api/current/info_quickstart.html)
+
+   This is not for beginners, but you have to browse the APIs when you write Blender python scripts.
+
+2. [Youtube: CG Python](https://www.youtube.com/@CGPython/playlists)
+
+   "CG Python" is a youtube channel that contains many tutorial videos for Blender python beginners.
    
-2. [Blender 3D: Noob to Pro](https://en.wikibooks.org/wiki/Blender_3D:_Noob_to_Pro#Table_of_Contents)
+3. [Blender 3D: Noob to Pro](https://en.wikibooks.org/wiki/Blender_3D:_Noob_to_Pro#Table_of_Contents)
 
    This is a wikibook mainly written by Blender team members. Its content focuses on the concepts of 3D modeling and rendering,
    and the usage of Blender UI widgets.
@@ -21,26 +27,24 @@ Some references,
    Only the first chapter [Python Scripting](https://en.wikibooks.org/wiki/Blender_3D:_Noob_to_Pro/Advanced_Tutorials/Python_Scripting/Introduction)
    of Unit 4 is related to the Blender Python (BPY). 
 
-3. [Github: njanakiev/blender-scripting](https://github.com/njanakiev/blender-scripting)
+4. [Github: njanakiev/blender-scripting](https://github.com/njanakiev/blender-scripting)
 
    This is a quickstart to write python script to implement simple objects, like sphere and donus in Blender.
 
    However, if diving into its source codes, it also gives examples how to create more complex objects, with animation and video etc.
 
-4. [Github: zeffii/BlenderPythonRecipes](https://github.com/zeffii/BlenderPythonRecipes/wiki)
+5. [Github: zeffii/BlenderPythonRecipes](https://github.com/zeffii/BlenderPythonRecipes/wiki)
 
    This github repo is more related with python geometry, rather than Blender.
    When you want to create some advanced features and need geometric python snippets, this may help. 
 
-5. [Blender python blogs](https://blenderscripting.blogspot.com/)
+6. [Blender python blogs](https://blenderscripting.blogspot.com/)
 
    A blogspot contains some Blender script snippets.
 
 
 &nbsp;
-## 2. njanakiev/blender-scripting
-
-### 2.1 fisher_iris_visualization mp4
+## 3. njanakiev/blender-scripting
 
 To obtain practical experience of Blender python scripting quickly, 
 we followed the instruction of [Github: njanakiev/blender-scripting](https://github.com/njanakiev/blender-scripting). 
@@ -81,4 +85,3 @@ we followed the instruction of [Github: njanakiev/blender-scripting](https://git
     Output #0, mp4, to 'fisher_iris_visualization.mp4':
     ~~~
 
-### 2.2 
