@@ -23,7 +23,7 @@ This article is an essential developer's guide to write python scripts with Blen
 
    This series of tutorial videos are in Chinese.
 
-4. [Bilibili: 安迪机器人: Blender Python编程 开发机器人](https://space.bilibili.com/38766249/lists/129256)
+4. [Bilibili: 瓜头酱油: blender API 从新建到打开](https://www.bilibili.com/video/BV1GE411F7Sg)
 
    This series of tutorial videos are also in Chinese,
    focusing on the explanation of various Blender python APIs. 
