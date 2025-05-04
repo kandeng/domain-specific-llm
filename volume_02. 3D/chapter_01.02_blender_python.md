@@ -18,8 +18,17 @@ This article is an essential developer's guide to write python scripts with Blen
 2. [Youtube: CG Python](https://www.youtube.com/@CGPython/playlists)
 
    "CG Python" is a youtube channel that contains many tutorial videos for Blender python beginners.
+
+3. [Bilibili: 安迪机器人: Blender Python编程 开发机器人](https://space.bilibili.com/38766249/lists/129256)
+
+   This series of tutorial videos are in Chinese.
+
+4. [Bilibili: 安迪机器人: Blender Python编程 开发机器人](https://space.bilibili.com/38766249/lists/129256)
+
+   This series of tutorial videos are also in Chinese,
+   focusing on the explanation of various Blender python APIs. 
    
-3. [Blender 3D: Noob to Pro](https://en.wikibooks.org/wiki/Blender_3D:_Noob_to_Pro#Table_of_Contents)
+5. [Blender 3D: Noob to Pro](https://en.wikibooks.org/wiki/Blender_3D:_Noob_to_Pro#Table_of_Contents)
 
    This is a wikibook mainly written by Blender team members. Its content focuses on the concepts of 3D modeling and rendering,
    and the usage of Blender UI widgets.
@@ -27,18 +36,18 @@ This article is an essential developer's guide to write python scripts with Blen
    Only the first chapter [Python Scripting](https://en.wikibooks.org/wiki/Blender_3D:_Noob_to_Pro/Advanced_Tutorials/Python_Scripting/Introduction)
    of Unit 4 is related to the Blender Python (BPY). 
 
-4. [Github: njanakiev/blender-scripting](https://github.com/njanakiev/blender-scripting)
+6. [Github: njanakiev/blender-scripting](https://github.com/njanakiev/blender-scripting)
 
    This is a quickstart to write python script to implement simple objects, like sphere and donus in Blender.
 
    However, if diving into its source codes, it also gives examples how to create more complex objects, with animation and video etc.
 
-5. [Github: zeffii/BlenderPythonRecipes](https://github.com/zeffii/BlenderPythonRecipes/wiki)
+7. [Github: zeffii/BlenderPythonRecipes](https://github.com/zeffii/BlenderPythonRecipes/wiki)
 
    This github repo is more related with python geometry, rather than Blender.
    When you want to create some advanced features and need geometric python snippets, this may help. 
 
-6. [Blender python blogs](https://blenderscripting.blogspot.com/)
+8. [Blender python blogs](https://blenderscripting.blogspot.com/)
 
    A blogspot contains some Blender script snippets.
 
