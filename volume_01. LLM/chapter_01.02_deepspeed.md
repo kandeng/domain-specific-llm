@@ -282,6 +282,12 @@ Referring to [Huggingface: Multi-GPU debugging](https://huggingface.co/docs/tran
     Notice that,
     * `--master_addr` is `172.16.80.31`,
     * `--node_rank` is `0`.
+
+<p align="center">
+   <img alt="Start the command on the master node" src="./assets/0102_master_nccl_01_20250506.png" width="48%">
+   &nbsp;  
+   <img alt="Complete the command on the master node" src="./assets/0102_master_nccl_02_20250506.png" width="48%">
+</p>
   
 2. On `172.16.80.33`
    
@@ -301,9 +307,9 @@ Referring to [Huggingface: Multi-GPU debugging](https://huggingface.co/docs/tran
     * `--node_rank` is `1`, reversed from the previous one. 
 
 <p align="center">
-   <img alt="Ubuntu network setting" src="./S06E01_src/ubuntu_proxy01.png" width="48%">
+   <img alt="Start the command on the slave node" src="./assets/0102_slave_nccl_01_20250506.png" width="48%">
    &nbsp;  
-   <img alt="Ubuntu proxy" src="./S06E01_src/ubuntu_proxy02.png" width="48%">
+   <img alt="Complete the command on the slave node" src="./assets/0102_slave_nccl_02_20250506.png" width="48%">
 </p>
 
 
