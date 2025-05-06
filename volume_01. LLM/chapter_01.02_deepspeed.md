@@ -299,7 +299,13 @@ Referring to [Huggingface: Multi-GPU debugging](https://huggingface.co/docs/tran
     Notice that,
     * `--master_addr` is still `172.16.80.31`, the same as the previous one, 
     * `--node_rank` is `1`, reversed from the previous one. 
-  
+
+<p align="center">
+   <img alt="Ubuntu network setting" src="./S06E01_src/ubuntu_proxy01.png" width="48%">
+   &nbsp;  
+   <img alt="Ubuntu proxy" src="./S06E01_src/ubuntu_proxy02.png" width="48%">
+</p>
+
 
 
 &nbsp;
