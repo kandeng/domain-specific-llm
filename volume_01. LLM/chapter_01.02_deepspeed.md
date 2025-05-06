@@ -266,20 +266,43 @@ Referring to [Huggingface: Multi-GPU debugging](https://huggingface.co/docs/tran
 >
 > Adjust the `--nproc_per_node` and `--nnodes` parameters to adapt it to your system.
 
-~~~
-(grpo) root@yw01:~/kdeng/deepspeed# pwd
-/root/kdeng/deepspeed
+1. On `172.16.80.31`
+   
+    ~~~
+    (grpo) root@yw01:~/kdeng/deepspeed# pwd
+    /root/kdeng/deepspeed
 
-(grpo) root@yw01:~/kdeng/deepspeed# wget https://raw.githubusercontent.com/huggingface/transformers/main/scripts/distributed/torch-distributed-gpu-test.py
+    (grpo) root@yw01:~/kdeng/deepspeed# wget 
+    https://raw.githubusercontent.com/huggingface/transformers/main/scripts/distributed/torch-distributed-gpu-test.py
 
-(grpo) root@yw01:~/kdeng/deepspeed# NCCL_DEBUG=INFO python -m torch.distributed.run --nproc_per_node 8 --nnodes 1 torch-distributed-gpu-test.py
-~~~
+    (grpo) root@yw01:~/kdeng/deepspeed# NCCL_DEBUG=INFO python -m torch.distributed.run --nproc_per_node 8 --nnodes 2
+    --master_addr 172.16.80.31 --master_port 29500 --node_rank 0 torch-distributed-gpu-test.py
+    ~~~
 
-The `torch-distributed-gpu-test.py` will print out a lot of messages. If there is no errors, that means everything works fine. 
+    Notice that,
+    * `--master_addr` is `172.16.80.31`,
+    * `--node_rank` is `0`.
+  
+2. On `172.16.80.33`
+   
+    ~~~
+    (grpo) root@yw-NF5688-M7-A0-R0-00:~/kdeng/deepspeed# pwd
+    /root/kdeng/deepspeed
 
-However, when setting `--nnodes 1` to 2, it threw many errors. The reason was that NCCL didn't work properly. 
+    (grpo) root@yw-NF5688-M7-A0-R0-00:~/kdeng/deepspeed# wget 
+    https://raw.githubusercontent.com/huggingface/transformers/main/scripts/distributed/torch-distributed-gpu-test.py
+
+    (grpo) root@yw-NF5688-M7-A0-R0-00:~/kdeng/deepspeed# NCCL_DEBUG=INFO python -m torch.distributed.run
+    --nproc_per_node 8 --nnodes 2 --master_addr 172.16.80.31 --master_port 29500 --node_rank 1 torch-distributed-gpu-test.py
+    ~~~
+
+    Notice that,
+    * `--master_addr` is still `172.16.80.31`, the same as the previous one, 
+    * `--node_rank` is `1`, reversed from the previous one. 
+  
 
 
+&nbsp;
 ### 5.3 Process that occupies a specific port
 
 Sometimes when running `torch-distributed-gpu-test.py`, 
