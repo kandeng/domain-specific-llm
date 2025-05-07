@@ -47,11 +47,14 @@ including tutorials, paper readings, hand-on practise, case studies.
 
   &nbsp;&nbsp; [0. Introduction](./volume_02.%203D/00_introduction.md)
      
-  &nbsp;&nbsp; **Chapter 1. Anatomy of Infinigen**
+  &nbsp;&nbsp; **Chapter 1. Blender Essential**
 
-  &nbsp;&nbsp; [01. Infinigen Getting Started](./volume_02.%203D/chapter_01.01_infinigen_guide.md)
+  &nbsp;&nbsp; [01. Blender Python Scripting](./volume_02.%203D/chapter_01.01_blender_python.md)
 
-  &nbsp;&nbsp; [02. Blender Python Scripting](./volume_02.%203D/chapter_01.02_blender_python.md)
+  &nbsp;&nbsp; **Chapter 2. Anatomy of Infinigen**
+
+  &nbsp;&nbsp; [01. Infinigen Getting Started](./volume_02.%203D/chapter_02.01_infinigen_guide.md)
+
 
 &nbsp;
 
