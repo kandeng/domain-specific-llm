@@ -1,4 +1,4 @@
-# Chapter 01 - 01. Infinigen Getting Started
+# Chapter 02 - 01. Infinigen Getting Started
 
 ## 1. Objectives
 
