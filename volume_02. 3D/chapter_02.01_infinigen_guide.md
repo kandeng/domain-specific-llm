@@ -44,7 +44,7 @@ We generated a natural scene in two ways, both were succussful.
 The result consists of many files, including many images. The human readable image is in the `outputs/hello_world/0/frames/Image/camera_0/` directory, 
 
    <p align="center">
-     <img alt="Generated RGP image of infinigen" src="./assets/0101_helloworld_desert_20250502.png" width="85%">
+     <img alt="Generated RGP image of infinigen" src="./assets/0201_helloworld_desert_20250502.png" width="85%">
    </p>
 
 Later on we will dive into the source codes of these two scripts, to study the usage of infinigen in depth. 
@@ -83,6 +83,6 @@ We opened the blender UI by executing the following,
 And then in the blender UI, we opened the file `scene.blend`, and saw the following 3D scene. 
 
    <p align="center">
-     <img alt="Generated RGP image of infinigen" src="./assets/0101_blender_scene_20250502.png" width="85%">
+     <img alt="Generated RGP image of infinigen" src="./assets/0201_blender_scene_20250502.png" width="85%">
    </p>
 
