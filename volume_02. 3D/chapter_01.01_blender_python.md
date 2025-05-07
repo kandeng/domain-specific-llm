@@ -1,11 +1,6 @@
-# Chapter 01 - 02. Blender Python Scripting 
+# Chapter 01 - 01. Blender Python Scripting 
 
 ## 1. Objectives
-
-As mentioned in [the previous article](./volume_02.%203D/chapter_01.01_infinigen_guide.md), 
-[Infinigen](https://github.com/princeton-vl/infinigen) is a python library
-that utilizes the [Blender python api](https://docs.blender.org/api/current/info_quickstart.html)
-to generate synthetic images of nature scene, as well as indoors layouts with furnitures. 
 
 This article is an essential developer's guide to write python scripts with Blender Python (BPY). 
 
@@ -72,11 +67,11 @@ we followed the instruction of [Github: njanakiev/blender-scripting](https://git
     Here is a sample of the series of images,
 
    <p align="center">
-     <img alt="A sample of fisher_iris image series" src="./assets/0102_fisher_iris_20250503.png" width="85%">
+     <img alt="A sample of fisher_iris image series" src="./assets/0101_fisher_iris_20250503.png" width="85%">
    </p>
 
 2. We used `ffmpeg` to convert the series of images into a mp4 video clip,
-   [fisher_iris_20250503.mp4](./assets/0102_fisher_iris_20250503.mp4). 
+   [fisher_iris_20250503.mp4](./assets/0101_fisher_iris_20250503.mp4). 
 
    You need to download the video clip first, after then view it using any video displayer,
    like [VLC media player](https://www.videolan.org/), or Chrome browser. 
